@@ -396,10 +396,11 @@ body.dark-theme .rodape {
   }
 
   td::before {
-	flex: 0 0 35%;
-	font-weight: 500;
-	font-size: 0.9rem;
+	content: attr(data-label);
+	flex: 0 0 40%;
+	font-weight: 600;
 	color: #475569;
+	display: block;
 	text-align: left;
   }
 
