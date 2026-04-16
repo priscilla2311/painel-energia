@@ -377,9 +377,9 @@ body.dark-theme .rodape {
   /* 🔥 Potência e Uso menores */
   td:nth-child(2) input,
   td:nth-child(3) input {
-    width: 40%;
-    min-width: 80px;
-    max-width: 120px;
+    width: 35%;
+    min-width: 70px;
+    max-width: 100px;
     text-align: right;
   }
 
