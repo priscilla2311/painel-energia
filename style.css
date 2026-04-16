@@ -358,50 +358,67 @@ body.dark-theme .rodape {
     background: #1e293b;
   }
 
-  /* 🔥 MUITO IMPORTANTE: muda layout do TD */
   td {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 6px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     padding: 10px 0;
     border: none;
   }
 
-  /* 🔥 LABEL (ANTES DO INPUT) */
+  /* 🔥 APARELHO (MAIOR E MAIS DESTAQUE) */
+  td:first-child input {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 14px;
+    box-sizing: border-box;
+  }
+
+  /* 🔥 PADRÃO PARA DEMAIS INPUTS */
+  td input {
+    width: 55%;
+    max-width: 140px;
+    min-width: 100px;
+    text-align: right;
+    box-sizing: border-box;
+  }
+
+  /* 🔥 (opcional mas seguro) reforça potência e uso */
+  td:nth-child(2) input,
+  td:nth-child(3) input {
+    width: 55%;
+    max-width: 140px;
+    min-width: 100px;
+  }
+
   td::before {
-    content: attr(data-label);
-    font-weight: 500;
-    font-size: 0.85rem;
-    color: #475569;
+	flex: 0 0 35%;
+	font-weight: 500;
+	font-size: 0.9rem;
+	color: #475569;
+	text-align: left;
   }
 
   body.dark-theme td::before {
     color: #cbd5e1;
   }
 
-  /* 🔥 INPUT PADRÃO */
-  td input {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    text-align: right;
-    box-sizing: border-box;
-  }
-
-  /* 🔥 APARELHO MAIS DESTACADO */
-  td:first-child input {
-    text-align: left;
-    font-size: 1rem;
-    font-weight: 600;
-    padding: 12px;
-  }
+  td:nth-child(1)::before { content: "Aparelho"; }
+  td:nth-child(2)::before { content: "Potência (W)"; }
+  td:nth-child(3)::before { content: "Uso (h/dia)"; }
+  td:nth-child(4)::before { content: "kWh/dia"; }
+  td:nth-child(5)::before { content: "kWh/mês"; }
+  td:nth-child(6)::before { content: "Custo"; }
+  td:nth-child(7)::before { content: "Ação"; }
 
   .btn-remover {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     font-size: 1.2rem;
-    align-self: flex-end;
   }
 
   .acoes button {
