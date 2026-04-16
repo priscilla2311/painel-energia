@@ -262,6 +262,10 @@ body.dark-theme .resultado-card {
   align-items: center;
 }
 
+.grafico-section canvas {
+  width: 100% !important;
+}
+
 body.dark-theme .grafico-section {
   background: #1e293b;
 }
@@ -274,12 +278,6 @@ canvas {
 
 body.dark-theme .grafico-section {
   background: #1e293b;
-}
-
-canvas {
-  max-width: 600px;
-  margin: 0 auto;
-  display: block;
 }
 
 /* CARTILHA */
@@ -369,6 +367,12 @@ body.dark-theme .rodape {
     width: 120px;
     text-align: right;
   }
+  
+  td:first-child input { 
+  width: 60%; 
+  font-size: 1rem; 
+  text-align: left; 
+  }
 
   td::before {
     font-weight: 600;
@@ -399,7 +403,7 @@ body.dark-theme .rodape {
   .acoes button {
     width: 100%;
     margin: 6px 0;
-  }
+  }  
 
 }
 
@@ -426,6 +430,7 @@ th:first-child {
   text-align: left;
 }
 
-td:first-child input {
-  width: 100%;
+@media (min-width: 601px) { 
+  td:first-child input { 
+   width: 100%; } 
 }
