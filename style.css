@@ -367,21 +367,28 @@ body.dark-theme .rodape {
     border: none;
   }
 
-  /* 🔥 Aparelho maior: label em cima, input ocupa toda a largura */
-  td:first-child {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  td:first-child::before {
-    width: 100%;
-    margin-bottom: 6px;
-  }
-
+  /* 🔥 Aparelho ocupa mais espaço */
   td:first-child input {
-    width: 100% !important;
-    max-width: 100% !important;
+    width: 100%;
+    max-width: 100%;
     text-align: left;
+  }
+
+  /* 🔥 Potência e Uso menores */
+  td:nth-child(2) input,
+  td:nth-child(3) input {
+    width: 30%;
+    min-width: 70px;
+    max-width: 90px;
+    text-align: right;
+  }
+
+  /* Demais inputs proporcionais */
+  td input {
+    width: 55%;
+    min-width: 100px;
+    max-width: 160px;
+    text-align: right;
   }
 
   td::before {
@@ -417,8 +424,6 @@ body.dark-theme .rodape {
     height: 260px;
   }
 }
-
-
 
 /* DESTAQUE MAIOR CONSUMO */
 .maior-consumo {
