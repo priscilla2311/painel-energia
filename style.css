@@ -371,9 +371,10 @@ body.dark-theme .rodape {
   td:first-child input {
 	width: 100%;
 	max-width: 100%;
-	min-width: unset;
 	text-align: left;
 	font-size: 1rem;
+	font-weight: 500;
+    padding: 12px;
   }
 
   td input {
@@ -390,7 +391,7 @@ body.dark-theme .rodape {
 	width: 55%;
 	max-width: 140px;
 	min-width: 100px;
-}
+  }
 
   td::before {
     flex: 1;
