@@ -2,98 +2,152 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Consumo de Energia</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload="calcular()">
 
-  <button class="btn-tema" onclick="toggleTheme()">🌙/☀️ Alternar Tema</button>
+  <div class="container">
 
-  <h1>Painel Interativo de Consumo de Energia</h1>
+    <button class="btn-tema" onclick="toggleTheme()">🌙/☀️ Alternar Tema</button>
 
-  <p>Tarifa de energia (R$/kWh):
-    <input type="number" id="tarifa" value="0.80" step="0.01">
-  </p>
+    <header class="hero">
+      <h1>Painel Interativo de Consumo de Energia</h1>
+      <p class="subtitulo">
+        Simulador inteligente para análise de consumo residencial
+      </p>
+    </header>
 
-  <table>
-    <tr>
-      <th>Aparelho</th>
-      <th>Potência (W)</th>
-      <th>Uso diário (h)</th>
-      <th>Consumo (kWh/dia)</th>
-      <th>Consumo (kWh/mês)</th>
-      <th>Custo (R$/mês)</th>
-    </tr>
+    <section class="configuracoes">
+      <label for="tarifa">Tarifa de energia (R$/kWh):</label>
+      <input type="number" id="tarifa" value="0.80" step="0.01">
+    </section>
+    
+	<section class="tabela-section">
+	  <table id="tabelaAparelhos">
+		<thead>
+		  <tr>
+			<th>Aparelho</th>
+			<th>Potência (W)</th>
+			<th>Uso diário (h)</th>
+			<th>Consumo (kWh/dia)</th>
+			<th>Consumo (kWh/mês)</th>
+			<th>Custo (R$/mês)</th>
+			<th>Ação</th>
+		  </tr>
+		</thead>
 
-    <tr>
-      <td>Chuveiro elétrico</td>
-      <td><input type="number" id="potChuveiro" value="5500"></td>
-      <td><input type="number" id="chuveiro" value="0"></td>
-      <td id="consumoChuveiroDia">0</td>
-      <td id="consumoChuveiroMes">0</td>
-      <td id="custoChuveiro">0</td>
-    </tr>
+		<tbody id="corpoTabela">
+		  <tr>
+			<td><input value="Chuveiro elétrico"></td>
+			<td><input type="number" value="5500"></td>
+			<td><input type="number" value="0"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
 
-    <tr>
-      <td>Geladeira</td>
-      <td><input type="number" id="potGeladeira" value="150"></td>
-      <td><input type="number" id="geladeira" value="24"></td>
-      <td id="consumoGeladeiraDia">0</td>
-      <td id="consumoGeladeiraMes">0</td>
-      <td id="custoGeladeira">0</td>
-    </tr>
+		  <tr>
+			<td><input value="Geladeira"></td>
+			<td><input type="number" value="150"></td>
+			<td><input type="number" value="24"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
 
-    <tr>
-      <td>Lâmpada LED</td>
-      <td><input type="number" id="potLampada" value="10"></td>
-      <td><input type="number" id="lampada" value="5"></td>
-      <td id="consumoLampadaDia">0</td>
-      <td id="consumoLampadaMes">0</td>
-      <td id="custoLampada">0</td>
-    </tr>
+		  <tr>
+			<td><input value="Lâmpada LED"></td>
+			<td><input type="number" value="10"></td>
+			<td><input type="number" value="5"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
 
-    <tr>
-      <td>Máquina de lavar roupa</td>
-      <td><input type="number" id="potLavar" value="1000"></td>
-      <td><input type="number" id="lavar" value="1"></td>
-      <td id="consumoLavarDia">0</td>
-      <td id="consumoLavarMes">0</td>
-      <td id="custoLavar">0</td>
-    </tr>
+		  <tr>
+			<td><input value="Máquina de lavar roupa"></td>
+			<td><input type="number" value="1000"></td>
+			<td><input type="number" value="1"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
 
-    <tr>
-      <td>Micro-ondas</td>
-      <td><input type="number" id="potMicro" value="1000"></td>
-      <td><input type="number" id="micro" value="0.5"></td>
-      <td id="consumoMicroDia">0</td>
-      <td id="consumoMicroMes">0</td>
-      <td id="custoMicro">0</td>
-    </tr>
+		  <tr>
+			<td><input value="Micro-ondas"></td>
+			<td><input type="number" value="1000"></td>
+			<td><input type="number" value="0.5"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
 
-    <tr>
-      <td>Ar-condicionado</td>
-      <td><input type="number" id="potAr" value="1200"></td>
-      <td><input type="number" id="ar" value="8"></td>
-      <td id="consumoArDia">0</td>
-      <td id="consumoArMes">0</td>
-      <td id="custoAr">0</td>
-    </tr>
-  </table>
+		  <tr>
+			<td><input value="Ar-condicionado"></td>
+			<td><input type="number" value="1200"></td>
+			<td><input type="number" value="8"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td>
+			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</section>
 
-  <button class="btn-calcular" onclick="calcular()">Calcular Consumo</button>
+	<div class="acoes">
+	  <button onclick="adicionarLinha()">+ Adicionar Aparelho</button>
+	</div>
+	
+	<div id="loading" class="loading">Calculando...</div>
 
-  <div class="resultado" id="resultado"></div>
+    <div class="resultado-card">
+      <div class="resultado" id="resultado"></div>
+    </div>
 
-  <canvas id="graficoConsumo"></canvas>
+    <section class="grafico-section">
+      <canvas id="graficoConsumo"></canvas>
+    </section>
 
-  <div class="cartilha">
-    <h2>Como interpretar os resultados</h2>
-    <ul>
-      <li><b>Consumo (kWh/dia):</b> gasto diário de cada aparelho.</li>
-      <li><b>Consumo (kWh/mês):</b> estimativa mensal (30 dias).</li>
-      <li><b>Custo:</b> valor estimado por aparelho.</li>
-    </ul>
+    <section class="cartilha">
+      <h2>Como interpretar os resultados</h2>
+      <ul>
+        <li><b>Consumo (kWh/dia):</b> gasto diário de cada aparelho.</li>
+        <li><b>Consumo (kWh/mês):</b> estimativa mensal baseada em 30 dias.</li>
+        <li><b>Custo:</b> valor estimado mensal de cada equipamento.</li>
+      </ul>
+    </section>
+
+    <footer class="rodape">
+      <p>Projeto acadêmico desenvolvido por Priscilla Dias</p>
+      <p>Tecnologias: HTML, CSS, JavaScript e Chart.js</p>
+    </footer>
+
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
