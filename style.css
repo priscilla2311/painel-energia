@@ -371,9 +371,12 @@ body.dark-theme .rodape {
   td:first-child input {
 	width: 100%;
 	max-width: 100%;
-	min-width: unset;
 	text-align: left;
-	font-size: 1rem;
+	font-size: 1.05rem;
+	font-weight: 600;
+    padding: 14px;
+	background: rgba(37, 99, 235, 0.05);
+    border-radius: 8px;
   }
 
   td input {
