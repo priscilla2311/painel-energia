@@ -5,12 +5,18 @@
   box-sizing: border-box;
 }
 
+/* EVITA CORTE LATERAL NO MOBILE */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* BASE */
 body {
   font-family: 'Inter', Arial, sans-serif;
   background: #f1f5f9;
   color: #0f172a;
-  padding: 30px 20px;
+  padding: 20px;
   transition: all 0.3s ease;
 }
 
@@ -92,6 +98,7 @@ input {
   border: 1px solid #cbd5e1;
   border-radius: 10px;
   width: 90px;
+  max-width: 100%;
 }
 
 body.dark-theme input {
@@ -256,24 +263,14 @@ body.dark-theme .resultado-card {
   margin-bottom: 25px;
 
   height: 350px;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .grafico-section canvas {
-  width: 100% !important;
-}
-
-body.dark-theme .grafico-section {
-  background: #1e293b;
-}
-
-/* IMPORTANTE */
-canvas {
-  max-width: 100%;
-  height: 100% !important;
+  max-width: 100% !important;
 }
 
 body.dark-theme .grafico-section {
@@ -293,7 +290,7 @@ body.dark-theme .cartilha {
   background: #1e293b;
 }
 
-/* RODAPÉ PROFISSIONAL */
+/* RODAPÉ */
 .rodape {
   text-align: center;
   color: #64748b;
@@ -331,8 +328,12 @@ body.dark-theme .rodape {
   }
 }
 
-/* MODO CARD PARA CELULAR */
+/* MOBILE CARD MODE */
 @media (max-width: 600px) {
+
+  body {
+    padding: 12px;
+  }
 
   table, thead, tbody, th, td, tr {
     display: block;
@@ -349,6 +350,7 @@ body.dark-theme .rodape {
     padding: 15px;
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    width: 100%;
   }
 
   body.dark-theme tr {
@@ -359,19 +361,20 @@ body.dark-theme .rodape {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
     padding: 8px 0;
     border: none;
   }
 
   td input {
-    width: 120px;
+    width: 100%;
+    max-width: 100%;
     text-align: right;
   }
-  
-  td:first-child input { 
-  width: 60%; 
-  font-size: 1rem; 
-  text-align: left; 
+
+  td:first-child input {
+    text-align: left;
   }
 
   td::before {
@@ -383,7 +386,6 @@ body.dark-theme .rodape {
     color: #cbd5e1;
   }
 
-  /* RÓTULOS */
   td:nth-child(1)::before { content: "Aparelho"; }
   td:nth-child(2)::before { content: "Potência (W)"; }
   td:nth-child(3)::before { content: "Uso (h/dia)"; }
@@ -392,22 +394,23 @@ body.dark-theme .rodape {
   td:nth-child(6)::before { content: "Custo"; }
   td:nth-child(7)::before { content: "Ação"; }
 
-  /* BOTÃO REMOVER AJUSTADO */
   .btn-remover {
     width: 42px;
     height: 42px;
     font-size: 1.2rem;
   }
 
-  /* BOTÃO ADICIONAR */
   .acoes button {
     width: 100%;
     margin: 6px 0;
-  }  
+  }
 
+  .grafico-section {
+    height: 280px;
+  }
 }
 
-/* DESTACAR MAIOR CONSUMO */
+/* DESTAQUE MAIOR CONSUMO */
 .maior-consumo {
   background: #fee2e2 !important;
   border-left: 4px solid #ef4444;
@@ -417,20 +420,15 @@ body.dark-theme .maior-consumo {
   background: #7f1d1d !important;
 }
 
-@media (max-width: 600px) { 
- .grafico-section { 
-  height: 280px; 
- } 
-}
-
-/* AUMENTAR COLUNA APARELHO */
+/* COLUNA APARELHO */
 td:first-child,
 th:first-child {
   width: 25%;
   text-align: left;
 }
 
-@media (min-width: 601px) { 
-  td:first-child input { 
-   width: 100%; } 
+@media (min-width: 601px) {
+  td:first-child input {
+    width: 100%;
+  }
 }
