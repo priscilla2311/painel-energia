@@ -367,30 +367,32 @@ body.dark-theme .rodape {
     border: none;
   }
 
-  /* 🔥 Aparelho ocupa mais espaço */
+  /* 🔥 APARELHO (MAIOR E MAIS DESTAQUE) */
   td:first-child input {
-	width: 100%;
-	max-width: 100%;
-	text-align: left;
-	font-size: 1rem;
-	font-weight: 600;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 600;
     padding: 14px;
+    box-sizing: border-box;
   }
 
+  /* 🔥 PADRÃO PARA DEMAIS INPUTS */
   td input {
-	width: 55%;
-	min-width: 100px;
-	max-width: 140px;
-	text-align: right;
-	box-sizing: border-box;
+    width: 55%;
+    max-width: 140px;
+    min-width: 100px;
+    text-align: right;
+    box-sizing: border-box;
   }
-  
-  /* Potência e Uso controlados */
+
+  /* 🔥 (opcional mas seguro) reforça potência e uso */
   td:nth-child(2) input,
   td:nth-child(3) input {
-	width: 55%;
-	max-width: 140px;
-	min-width: 100px;
+    width: 55%;
+    max-width: 140px;
+    min-width: 100px;
   }
 
   td::before {
