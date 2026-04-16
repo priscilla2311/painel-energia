@@ -375,8 +375,7 @@ body.dark-theme .rodape {
 	font-size: 1.05rem;
 	font-weight: 600;
     padding: 14px;
-	background: rgba(37, 99, 235, 0.05);
-    border-radius: 8px;
+	
   }
 
   td input {
