@@ -383,6 +383,14 @@ body.dark-theme .rodape {
 	text-align: right;
 	box-sizing: border-box;
   }
+  
+  /* Potência e Uso controlados */
+  td:nth-child(2) input,
+  td:nth-child(3) input {
+	width: 55%;
+	max-width: 140px;
+	min-width: 100px;
+}
 
   td::before {
     flex: 1;
