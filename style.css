@@ -367,10 +367,20 @@ body.dark-theme .rodape {
     border: none;
   }
 
-  /* 🔥 Apenas o campo Aparelho maior */
-  td:first-child input {
+  /* 🔥 Aparelho maior: label em cima, input ocupa toda a largura */
+  td:first-child {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  td:first-child::before {
     width: 100%;
-    max-width: 100%;
+    margin-bottom: 6px;
+  }
+
+  td:first-child input {
+    width: 100% !important;
+    max-width: 100% !important;
     text-align: left;
   }
 
@@ -407,6 +417,7 @@ body.dark-theme .rodape {
     height: 260px;
   }
 }
+
 
 
 /* DESTAQUE MAIOR CONSUMO */
