@@ -1,0 +1,117 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  color: #2c3e50;
+}
+
+body.dark-theme {
+  background: #2c3e50;
+  color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #34495e;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+table.dark-theme td {
+  background-color: #444;
+  color: #fff;
+}
+
+table.dark-theme th {
+  background-color: #555;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.btn-calcular {
+  background-color: #27ae60;
+}
+
+.btn-calcular:hover {
+  background-color: #2ecc71;
+}
+
+.btn-tema {
+  background-color: #3498db;
+}
+
+.btn-tema:hover {
+  background-color: #2980b9;
+}
+
+body.dark-theme .btn-tema {
+  background-color: #f1c40f;
+  color: #2c3e50;
+}
+
+.resultado {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.cartilha {
+  margin-top: 20px;
+  padding: 15px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: #2c3e50;
+}
+
+body.dark-theme .cartilha {
+  background: #34495e;
+  color: white;
+  border-color: #555;
+}
+
+canvas {
+  display: block;
+  margin: 20px auto;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+@media (max-width: 600px) {
+  table, th, td {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+}
