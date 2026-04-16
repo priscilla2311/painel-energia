@@ -16,9 +16,7 @@ function adicionarLinha() {
       <td class="consumoMes">0</td>
       <td class="custo">R$ 0,00</td>
       <td>
-        <button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho">
-          ✕
-        </button>
+        <button class="btn-remover" onclick="removerLinha(this)">✕</button>
       </td>
     </tr>
   `;
@@ -28,8 +26,7 @@ function adicionarLinha() {
 }
 
 function removerLinha(botao) {
-  const confirmar = confirm("Tem certeza que deseja remover este aparelho?");
-  if (!confirmar) return;
+  if (!confirm("Tem certeza que deseja remover este aparelho?")) return;
 
   botao.closest("tr").remove();
   calcular();
@@ -49,6 +46,9 @@ function calcular() {
 
     const labels = [];
     const dadosGrafico = [];
+
+    const linhasArray = Array.from(linhas);
+    linhasArray.forEach(l => l.classList.remove("maior-consumo"));
 
     linhas.forEach(linha => {
       const inputs = linha.querySelectorAll("input");
@@ -76,7 +76,13 @@ function calcular() {
       dadosGrafico.push(consumoMes);
     });
 
+    // 🔥 DESTACAR MAIOR CONSUMO
     const maiorIndice = dadosGrafico.indexOf(Math.max(...dadosGrafico));
+
+    if (linhasArray[maiorIndice]) {
+      linhasArray[maiorIndice].classList.add("maior-consumo");
+    }
+
     const maiorConsumo = labels[maiorIndice] || "-";
 
     document.getElementById("resultado").innerHTML = `
@@ -101,7 +107,7 @@ function atualizarGrafico(labels, dados) {
   if (grafico) grafico.destroy();
 
   grafico = new Chart(ctx, {
-    type: "pie",
+    type: "doughnut",
     data: {
       labels,
       datasets: [{
@@ -120,13 +126,32 @@ function atualizarGrafico(labels, dados) {
     },
     options: {
       responsive: true,
+	  maintainAspectRatio: false,
       plugins: {
         legend: {
-          position: "bottom"
+          position: "bottom",
+          labels: {
+            padding: 20,
+            font: {
+              size: 12
+            }
+          }
         },
         title: {
           display: true,
-          text: "Distribuição do Consumo Mensal"
+          text: "Distribuição do Consumo Mensal",
+          font: {
+            size: 16,
+            weight: "bold"
+          }
+        },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              let valor = context.raw.toFixed(2);
+              return `${context.label}: ${valor} kWh`;
+            }
+          }
         }
       }
     }
