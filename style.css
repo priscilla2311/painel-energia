@@ -319,6 +319,7 @@ body.dark-theme .rodape {
 /* MODO CARD PARA CELULAR */
 @media (max-width: 600px) {
 
+
   table, thead, tbody, th, td, tr {
     display: block;
     width: 100%;
@@ -384,4 +385,18 @@ body.dark-theme .rodape {
     margin: 6px 0;
   }
 
+}
+
+table td:first-child input {
+  width: 100%;
+  min-width: 180px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: left;
+}
+
+table td:first-child {
+  text-align: left;
+  max-width: 250px;
 }
