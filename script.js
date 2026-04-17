@@ -1,5 +1,27 @@
 let grafico;
 
+function converterHoras(valor) {
+  if (!valor) return 0;
+
+  valor = valor.toString().toLowerCase().trim();
+
+  // formato 1h30
+  if (valor.includes("h")) {
+    const partes = valor.split("h");
+    const horas = parseFloat(partes[0]) || 0;
+    const minutos = parseFloat(partes[1]) || 0;
+    return horas + (minutos / 60);
+  }
+
+  // formato 90min
+  if (valor.includes("min")) {
+    return parseFloat(valor) / 60;
+  }
+
+  // número simples (ex: 1.5)
+  return parseFloat(valor) || 0;
+}
+
 function toggleTheme() {
   document.body.classList.toggle("dark-theme");
 }
@@ -55,7 +77,7 @@ function calcular() {
 
       const nome = inputs[0].value || "Aparelho";
       const potencia = parseFloat(inputs[1].value) || 0;
-      const horas = parseFloat(inputs[2].value) || 0;
+      const horas = converterHoras(inputs[2].value);
 
       const consumoDia = (potencia * horas) / 1000;
       const consumoMes = consumoDia * 30;
