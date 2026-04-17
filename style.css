@@ -364,7 +364,7 @@ body.dark-theme .rodape {
   /* RÓTULOS */
   td:nth-child(1)::before { content: "Aparelho"; }
   td:nth-child(2)::before { content: "Potência (W)"; }
-  td:nth-child(3)::before { content: "Uso (h/dia)"; }
+  td:nth-child(3)::before { content: "Uso diário (min/h)"; }
   td:nth-child(4)::before { content: "kWh/dia"; }
   td:nth-child(5)::before { content: "kWh/mês"; }
   td:nth-child(6)::before { content: "Custo"; }
