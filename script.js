@@ -34,6 +34,9 @@ function adicionarLinha() {
       <td><input value="Novo aparelho"></td>
       <td><input type="number" value="0"></td>
       <td><input type="number" value="0"></td>
+	  <td>
+		 <input type="checkbox">
+	  </td>
       <td class="consumoDia">0</td>
       <td class="consumoMes">0</td>
       <td class="custo">R$ 0,00</td>
@@ -78,8 +81,12 @@ function calcular() {
       const nome = inputs[0].value || "Aparelho";
       const potencia = parseFloat(inputs[1].value) || 0;
       const horas = converterHoras(inputs[2].value);
+	  
+	  // 🔥 AQUI entra o inverter
+	  const isInverter = inputs[3]?.checked;
+	  const fator = isInverter ? 0.6 : 1;
 
-      const consumoDia = (potencia * horas) / 1000;
+	  const consumoDia = (potencia * horas * fator) / 1000;
       const consumoMes = consumoDia * 30;
       const custo = consumoMes * tarifa;
 

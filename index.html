@@ -37,9 +37,10 @@
 			<th>Aparelho</th>
 			<th>Potência (W)</th>
 			<th>Uso diário (min/h)</th>
+			<th>Inverter?</th>
 			<th>Consumo (kWh/dia)</th>
 			<th>Consumo (kWh/mês)</th>
-			<th>Custo (R$/mês)</th>
+			<th>Custo (R$/mês)</th>			
 			<th>Ação</th>
 		  </tr>
 		</thead>
@@ -49,9 +50,12 @@
 			<td><input value="Chuveiro elétrico"></td>
 			<td><input type="number" value="5500"></td>
 			<td><input type="text" value="0" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
-			<td class="custo">R$ 0,00</td>
+			<td class="custo">R$ 0,00</td>			
 			<td>
 			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
 			</td>
@@ -61,9 +65,12 @@
 			<td><input value="Geladeira"></td>
 			<td><input type="number" value="150"></td>
 			<td><input type="text" value="24h" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
-			<td class="custo">R$ 0,00</td>
+			<td class="custo">R$ 0,00</td>			
 			<td>
 			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
 			</td>
@@ -73,6 +80,9 @@
 			<td><input value="Lâmpada LED"></td>
 			<td><input type="number" value="10"></td>
 			<td><input type="text" value="5h" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
@@ -85,6 +95,9 @@
 			<td><input value="Máquina de lavar roupa"></td>
 			<td><input type="number" value="1000"></td>
 			<td><input type="text" value="1h" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
@@ -97,6 +110,9 @@
 			<td><input value="Micro-ondas"></td>
 			<td><input type="number" value="1000"></td>
 			<td><input type="text" value="30min" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
@@ -109,6 +125,9 @@
 			<td><input value="Ar-condicionado"></td>
 			<td><input type="number" value="1200"></td>
 			<td><input type="text" value="8h" placeholder="Ex:9min,1h"></td>
+			<td>
+			  <input type="checkbox">
+			</td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
