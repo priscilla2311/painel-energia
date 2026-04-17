@@ -318,8 +318,7 @@ body.dark-theme .rodape {
 
 /* MODO CARD PARA CELULAR */
 @media (max-width: 600px) {
-
-
+	
   table, thead, tbody, th, td, tr {
     display: block;
     width: 100%;
@@ -343,20 +342,19 @@ body.dark-theme .rodape {
 
   td {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding: 8px 0;
-    border: none;
+    gap: 10px;
   }
 
   td input {
-    width: 120px;
-    text-align: right;
+    flex: 1;
+    min-width: 0;
   }
 
   td::before {
-    font-weight: 600;
-    color: #475569;
+    flex: 0 0 110px;
+    text-align: left;
   }
 
   body.dark-theme td::before {
