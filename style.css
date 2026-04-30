@@ -111,7 +111,7 @@ table {
   border-collapse: collapse;
   background: white;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
@@ -369,7 +369,8 @@ body.dark-theme .rodape {
   td:nth-child(5)::before { content: "kWh/dia"; }
   td:nth-child(6)::before { content: "kWh/mês"; }
   td:nth-child(7)::before { content: "Custo"; }
-  td:nth-child(8)::before { content: "Ação"; }
+  td:nth-child(8)::before { content: "Nível"; }
+  td:nth-child(9)::before { content: "Ação"; }
 
   /* BOTÃO REMOVER AJUSTADO */
   .btn-remover {
@@ -398,4 +399,120 @@ table td:first-child input {
 table td:first-child {
   text-align: left;
   max-width: 250px;
+}
+
+/* BOTÃO DE SUGESTÃO ⚡ */
+td button {
+  margin-left: 5px;
+  padding: 6px 8px;
+  border: none;
+  border-radius: 8px;
+  background: #facc15;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+td button:hover {
+  background: #eab308;
+  transform: scale(1.1);
+}
+
+body.dark-theme td button {
+  background: #f59e0b;
+  color: #0f172a;
+}
+
+/* ALINHAR INPUT + BOTÃO */
+td:nth-child(2) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+/* LINHA DE ALTO CONSUMO */
+.alto-consumo {
+  background: #fee2e2 !important;
+  border-left: 4px solid #ef4444;
+}
+
+.resultado {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.sugestao-potencia {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+body.dark-theme .sugestao-potencia {
+  color: #93c5fd;
+}
+
+td:first-child {
+  position: relative;
+}
+
+.lista-sugestoes {
+  position: absolute;
+  top: 48px;
+  left: 12px;
+  right: 12px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.item-sugestao {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.item-sugestao:hover {
+  background: #e0f2fe;
+}
+
+body.dark-theme .lista-sugestoes {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+body.dark-theme .item-sugestao:hover {
+  background: #334155;
+}
+
+.nivel {
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.nivel.alto {
+  color: #dc2626;
+}
+
+.nivel.medio {
+  color: #ca8a04;
+}
+
+.nivel.baixo {
+  color: #16a34a;
+}
+
+.tabela-section {
+  overflow: visible;
+  padding-bottom: 120px;
+}
+
+.lista-sugestoes {
+  z-index: 9999;
 }

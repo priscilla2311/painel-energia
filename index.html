@@ -15,21 +15,25 @@
 <body onload="calcular()">
 
   <div class="container">
-
-    <button class="btn-tema" onclick="toggleTheme()">🌙/☀️ Alternar Tema</button>
-
-    <header class="hero">
-      <h1>Painel Interativo de Consumo de Energia</h1>
-      <p class="subtitulo">
-        Simulador inteligente para análise de consumo residencial
-      </p>
-    </header>
-
-    <section class="configuracoes">
-      <label for="tarifa">Tarifa de energia (R$/kWh):</label>
-      <input type="number" id="tarifa" value="0.80" step="0.01">
-    </section>
     
+	<button class="btn-tema" onclick="toggleTheme()">🌙/☀️ Alternar Tema</button>
+
+	<header class="hero">
+	  <h1>Painel Interativo de Consumo de Energia</h1>
+	  <p class="subtitulo">
+		Simulador inteligente para análise de consumo residencial
+	  </p>
+	</header>
+
+	<section class="configuracoes">
+	  <label for="tarifa">Tarifa de energia (R$/kWh):</label>
+	  <input type="number" id="tarifa" value="0.80" step="0.01">
+	</section>
+
+	<section class="cartilha">
+	  <p>💡 Dica: digite o nome do aparelho ou clique no ⚡ para sugerir a potência automaticamente.</p>
+	</section>
+
 	<section class="tabela-section">
 	  <table id="tabelaAparelhos">
 		<thead>
@@ -40,101 +44,104 @@
 			<th>Inverter?</th>
 			<th>Consumo (kWh/dia)</th>
 			<th>Consumo (kWh/mês)</th>
-			<th>Custo (R$/mês)</th>			
+			<th>Custo (R$/mês)</th>		
+			<th>Nível</th>			
 			<th>Ação</th>
 		  </tr>
 		</thead>
 
 		<tbody id="corpoTabela">
+
 		  <tr>
-			<td><input value="Chuveiro elétrico"></td>
-			<td><input type="number" value="5500"></td>
+			<td><input value="Chuveiro elétrico" oninput="sugerirPotenciaPorNome(this)"></td>
+			<td>
+			  <input type="number" value="5500">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
+			</td>
 			<td><input type="text" value="0" placeholder="Ex:9min,1h"></td>
-			<td>
-			  <input type="checkbox">
-			</td>
-			<td class="consumoDia">0</td>
-			<td class="consumoMes">0</td>
-			<td class="custo">R$ 0,00</td>			
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
-		  </tr>
-
-		  <tr>
-			<td><input value="Geladeira"></td>
-			<td><input type="number" value="150"></td>
-			<td><input type="text" value="24h" placeholder="Ex:9min,1h"></td>
-			<td>
-			  <input type="checkbox">
-			</td>
-			<td class="consumoDia">0</td>
-			<td class="consumoMes">0</td>
-			<td class="custo">R$ 0,00</td>			
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
-		  </tr>
-
-		  <tr>
-			<td><input value="Lâmpada LED"></td>
-			<td><input type="number" value="10"></td>
-			<td><input type="text" value="5h" placeholder="Ex:9min,1h"></td>
-			<td>
-			  <input type="checkbox">
-			</td>
+			<td><input type="checkbox"></td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
+			<td class="nivel"></td>			
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
 		  </tr>
 
 		  <tr>
-			<td><input value="Máquina de lavar roupa"></td>
-			<td><input type="number" value="1000"></td>
-			<td><input type="text" value="1h" placeholder="Ex:9min,1h"></td>
+			<td><input value="Geladeira" oninput="sugerirPotenciaPorNome(this)"></td>
 			<td>
-			  <input type="checkbox">
+			  <input type="number" value="150">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
 			</td>
+			<td><input type="text" value="24h"></td>
+			<td><input type="checkbox"></td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
-			<td class="custo">R$ 0,00</td>
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
+			<td class="custo">R$ 0,00</td>	
+			<td class="nivel"></td>		
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
 		  </tr>
 
 		  <tr>
-			<td><input value="Micro-ondas"></td>
-			<td><input type="number" value="1000"></td>
-			<td><input type="text" value="30min" placeholder="Ex:9min,1h"></td>
+			<td><input value="Lâmpada LED" oninput="sugerirPotenciaPorNome(this)"></td>
 			<td>
-			  <input type="checkbox">
+			  <input type="number" value="10">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
 			</td>
+			<td><input type="text" value="5h"></td>
+			<td><input type="checkbox"></td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
+			<td class="nivel"></td>		
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
 		  </tr>
 
 		  <tr>
-			<td><input value="Ar-condicionado"></td>
-			<td><input type="number" value="1200"></td>
-			<td><input type="text" value="8h" placeholder="Ex:9min,1h"></td>
+			<td><input value="Máquina de lavar roupa" oninput="sugerirPotenciaPorNome(this)"></td>
 			<td>
-			  <input type="checkbox">
+			  <input type="number" value="1000">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
 			</td>
+			<td><input type="text" value="1h"></td>
+			<td><input type="checkbox"></td>
 			<td class="consumoDia">0</td>
 			<td class="consumoMes">0</td>
 			<td class="custo">R$ 0,00</td>
-			<td>
-			<button class="btn-remover" onclick="removerLinha(this)" title="Remover aparelho"> ✕ </button>
-			</td>
+			<td class="nivel"></td>		
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
 		  </tr>
+
+		  <tr>
+			<td><input value="Micro-ondas" oninput="sugerirPotenciaPorNome(this)"></td>
+			<td>
+			  <input type="number" value="1000">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
+			</td>
+			<td><input type="text" value="30min"></td>
+			<td><input type="checkbox"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td class="nivel"></td>		
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
+		  </tr>
+
+		  <tr>
+			<td><input value="Ar-condicionado" oninput="sugerirPotenciaPorNome(this)"></td>
+			<td>
+			  <input type="number" value="1200">
+			  <button onclick="sugerirPotenciaManual(this)">⚡</button>
+			</td>
+			<td><input type="text" value="8h"></td>
+			<td><input type="checkbox"></td>
+			<td class="consumoDia">0</td>
+			<td class="consumoMes">0</td>
+			<td class="custo">R$ 0,00</td>
+			<td class="nivel"></td>		
+			<td><button class="btn-remover" onclick="removerLinha(this)">✕</button></td>
+		  </tr>
+
 		</tbody>
 	  </table>
 	</section>
@@ -142,34 +149,35 @@
 	<div class="acoes">
 	  <button onclick="adicionarLinha()">+ Adicionar Aparelho</button>
 	</div>
-	
+
 	<div id="loading" class="loading">Calculando...</div>
 
-    <div class="resultado-card">
-      <div class="resultado" id="resultado"></div>
-    </div>
+	<div class="resultado-card">
+	  <div class="resultado" id="resultado"></div>
+	</div>
 
-    <section class="grafico-section">
-      <canvas id="graficoConsumo"></canvas>
-    </section>
+	<section class="grafico-section">
+	  <canvas id="graficoConsumo"></canvas>
+	</section>
 
-    <section class="cartilha">
-      <h2>Como interpretar os resultados</h2>
-      <ul>
-        <li><b>Consumo (kWh/dia):</b> gasto diário de cada aparelho.</li>
-        <li><b>Consumo (kWh/mês):</b> estimativa mensal baseada em 30 dias.</li>
-        <li><b>Custo:</b> valor estimado mensal de cada equipamento.</li>
-      </ul>
-    </section>
+	<section class="cartilha">
+	  <h2>Como interpretar os resultados</h2>
+	  <ul>
+		<li><b>Consumo (kWh/dia):</b> gasto diário de cada aparelho.</li>
+		<li><b>Consumo (kWh/mês):</b> estimativa mensal baseada em 30 dias.</li>
+		<li><b>Custo:</b> valor estimado mensal de cada equipamento.</li>
+	  </ul>
+	</section>
 
-    <footer class="rodape">
-      <p>Projeto acadêmico desenvolvido por Priscilla Dias</p>
-      <p>Tecnologias: HTML, CSS, JavaScript e Chart.js</p>
-    </footer>
-
+	<footer class="rodape">
+	  <p>Projeto acadêmico desenvolvido por Priscilla Dias</p>
+	  <p>Tecnologias: HTML, CSS, JavaScript e Chart.js</p>
+	</footer>
+	
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script src="script.js"></script>
 
 </body>
