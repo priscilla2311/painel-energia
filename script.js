@@ -283,21 +283,36 @@ function atualizarGrafico(labels, dados) {
 
   if (grafico) grafico.destroy();
 
+  const coresAplicadas = labels.map((_, i) =>
+    `hsl(${(i * 137) % 360}, 70%, 50%)`
+  );
+
   grafico = new Chart(ctx, {
     type: "pie",
     data: {
-      labels,
+      labels: labels,
       datasets: [{
         data: dados,
-        backgroundColor: [
-          "#ef4444",
-          "#3b82f6",
-          "#f59e0b",
-          "#8b5cf6",
-          "#14b8a6",
-          "#22c55e"
-        ]
+        backgroundColor: coresAplicadas,
+        borderColor: "#ffffff",
+        borderWidth: 2
       }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "bottom",
+          labels: {
+            boxWidth: 20,
+            padding: 15
+          }
+        },
+        title: {
+          display: true,
+          text: "Distribuição do Consumo Mensal"
+        }
+      }
     }
   });
 }
