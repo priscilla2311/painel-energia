@@ -382,3 +382,41 @@ document.addEventListener("click", function(e) {
 });
 
 window.onload = calcular;
+
+function salvarPDF() {
+  window.print();
+}
+
+function salvarExcel() {
+  const linhas = document.querySelectorAll("#corpoTabela tr");
+
+  let csv = "Aparelho;Potência (W);Uso diário;Consumo kWh/dia;Consumo kWh/mês;Custo;Nível\n";
+
+  linhas.forEach(linha => {
+    const inputs = linha.querySelectorAll("input");
+
+    const aparelho = inputs[0].value;
+    const potencia = inputs[1].value;
+    const usoDiario = inputs[2].value;
+    const consumoDia = linha.querySelector(".consumoDia").innerText;
+    const consumoMes = linha.querySelector(".consumoMes").innerText;
+    const custo = linha.querySelector(".custo").innerText;
+    const nivel = linha.querySelector(".nivel")?.innerText || "";
+
+    csv += `${aparelho};${potencia};${usoDiario};${consumoDia};${consumoMes};${custo};${nivel}\n`;
+  });
+  
+  const resultado = document.getElementById("resultado").innerText;
+
+	csv += "\n";
+	csv += resultado.replace(/\n/g, "\n");
+
+  const blob = new Blob(["\uFEFF" + csv], {
+    type: "text/csv;charset=utf-8;"
+  });
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "painel-consumo-energia.csv";
+  link.click();
+}
