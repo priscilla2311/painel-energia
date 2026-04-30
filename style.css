@@ -521,3 +521,12 @@ input {
   font-size: 16px;
   padding: 12px;
 }
+
+.item-sugestao.ativo {
+  background: #bfdbfe;
+  font-weight: 700;
+}
+
+body.dark-theme .item-sugestao.ativo {
+  background: #334155;
+}

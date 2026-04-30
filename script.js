@@ -157,6 +157,52 @@ function mostrarSugestoes(input) {
   }
 }
 
+function navegarSugestoes(event, input) {
+  const lista = input.parentElement.querySelector(".lista-sugestoes");
+  if (!lista) return;
+
+  const itens = lista.querySelectorAll(".item-sugestao");
+  if (itens.length === 0) return;
+
+  let atual = Array.from(itens).findIndex(item =>
+    item.classList.contains("ativo")
+  );
+
+  if (event.key === "ArrowDown") {
+    event.preventDefault();
+
+    if (atual >= 0) {
+      itens[atual].classList.remove("ativo");
+    }
+
+    atual = atual < itens.length - 1 ? atual + 1 : 0;
+    itens[atual].classList.add("ativo");
+  }
+
+  if (event.key === "ArrowUp") {
+    event.preventDefault();
+
+    if (atual >= 0) {
+      itens[atual].classList.remove("ativo");
+    }
+
+    atual = atual > 0 ? atual - 1 : itens.length - 1;
+    itens[atual].classList.add("ativo");
+  }
+
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    if (atual >= 0) {
+      itens[atual].click();
+    }
+  }
+
+  if (event.key === "Escape") {
+    lista.remove();
+  }
+}
+
 // BOTÃO ⚡
 function sugerirPotenciaManual(btn) {
   const linha = btn.closest("tr");
@@ -178,7 +224,7 @@ function adicionarLinha() {
 
   const novaLinha = `
     <tr>
-      <td><input value="Novo aparelho" oninput="sugerirPotenciaPorNome(this)"></td>
+      <td><input value="Novo aparelho" oninput="sugerirPotenciaPorNome(this)" onkeydown="navegarSugestoes(event, this)"></td>
       <td>
         <input type="number" value="0">
         <button onclick="sugerirPotenciaManual(this)">⚡</button>
