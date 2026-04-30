@@ -3,57 +3,57 @@ let grafico;
 // BASE DE APARELHOS
 const baseAparelhos = {
   // BANHEIRO
-  "chuveiro": 5500,
-  "secador de cabelo": 1200,
+  "Chuveiro": 5500,
+  "Secador de cabelo": 1200,
 
   // COZINHA
-  "geladeira": 150,
-  "geladeira duplex": 250,
-  "freezer": 200,
-  "micro-ondas": 1200,
-  "microondas": 1200,
-  "forno elétrico": 2000,
-  "air fryer": 1500,
-  "liquidificador": 300,
-  "cafeteira": 800,
-  "sandwicheira": 800,
+  "Geladeira": 150,
+  "Geladeira duplex": 250,
+  "Freezer": 200,
+  "Micro-ondas": 1200,
+  "Microondas": 1200,
+  "Forno elétrico": 2000,
+  "Air fryer": 1500,
+  "Liquidificador": 300,
+  "Cafeteira": 800,
+  "Sandwicheira": 800,
 
   // SALA / QUARTO
-  "tv": 120,
-  "televisão": 120,
-  "tv 50": 150,
-  "videogame": 200,
-  "computador": 300,
-  "notebook": 100,
-  "roteador": 20,
-  "modem": 15,
-  "som": 100,
+  "Tv": 120,
+  "Televisão": 120,
+  "Tv 50": 150,
+  "Videogame": 200,
+  "Computador": 300,
+  "Notebook": 100,
+  "Roteador": 20,
+  "Modem": 15,
+  "Som": 100,
 
   // CLIMATIZAÇÃO
-  "ar-condicionado": 1200,
-  "ar condicionado": 1200,
-  "ar 9000": 900,
-  "ar 12000": 1200,
-  "ventilador": 80,
+  "Ar-condicionado": 1200,
+  "Ar condicionado": 1200,
+  "Ar 9000": 900,
+  "Ar 12000": 1200,
+  "Ventilador": 80,
 
   // ILUMINAÇÃO
-  "lâmpada": 10,
-  "lampada": 10,
-  "lâmpada led": 10,
-  "lampada led": 10,
+  "Lâmpada": 10,
+  "Lampada": 10,
+  "Lâmpada led": 10,
+  "Lampada led": 10,
 
   // LAVANDERIA
-  "máquina de lavar roupa": 1000,
-  "maquina de lavar roupa": 1000,
-  "lavadora": 1000,
-  "secadora": 2000,
-  "ferro de passar": 1000,
+  "Máquina de lavar roupa": 1000,
+  "Maquina de lavar roupa": 1000,
+  "Lavadora": 1000,
+  "Secadora": 2000,
+  "Ferro de passar": 1000,
 
   // GENÉRICOS (sempre por último)
-  "máquina": 1000,
-  "maquina": 1000,
-  "micro": 1000,
-  "ar": 1200
+  "Máquina": 1000,
+  "Maquina": 1000,
+  "Micro": 1000,
+  "Ar": 1200
 };
 
 // CONVERTER HORAS
@@ -136,15 +136,17 @@ function mostrarSugestoes(input) {
       item.innerText = `${chave} - ${baseAparelhos[chave]}W`;
 
       item.onclick = function () {
-        const linha = input.closest("tr");
-        const inputs = linha.querySelectorAll("input");
+	  const linha = input.closest("tr");
+	  const inputs = linha.querySelectorAll("input");
 
-        inputs[0].value = chave;
-        inputs[1].value = baseAparelhos[chave];
+	  inputs[0].value = chave;
+	  inputs[1].value = baseAparelhos[chave];
 
-        lista.remove();
-        calcular();
-      };
+	  lista.remove();
+
+	  calcular();
+	  ativarRecalculoAutomatico();
+	};
 
       lista.appendChild(item);
     }

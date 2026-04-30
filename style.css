@@ -516,3 +516,8 @@ body.dark-theme .item-sugestao:hover {
 .lista-sugestoes {
   z-index: 9999;
 }
+
+input {
+  font-size: 16px;
+  padding: 12px;
+}
