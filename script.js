@@ -273,7 +273,26 @@ function calcular() {
     const potencia = parseFloat(inputs[1].value) || 0;
     const horas = converterHoras(inputs[2].value);
 
-    const isInverter = inputs[3]?.checked;
+    const nomeNormalizado = normalizar(nome);
+
+	const aparelhosInverter = [
+	  "ar-condicionado",
+	  "ar condicionado",
+	  "ar 9000",
+	  "ar 12000",
+	  "geladeira",
+	  "geladeira duplex",
+	  "freezer",
+	  "máquina de lavar roupa",
+	  "maquina de lavar roupa",
+	  "lavadora"
+	];
+
+	const podeSerInverter = aparelhosInverter.some(aparelho =>
+	  nomeNormalizado.includes(normalizar(aparelho))
+	);
+
+	const isInverter = podeSerInverter && inputs[3]?.checked;
 	const fator = isInverter ? 0.6 : 1;
 
 	const consumoDia = (potencia * horas * fator) / 1000;
